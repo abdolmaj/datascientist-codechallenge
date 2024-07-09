@@ -48,17 +48,17 @@ Features used to generate forecasts include hourly energy consumption, the weath
 
 The output is the expected demand per hour for 24 hours. The forecast is generated from 00:00 each day, over the course of one year testing period.
 
-### The feature extraction for the model
+### Feature extraction for the model
 
-The default lags are the previous 7 days. However, we can go beyond 7 days by setting the extra_lag parameter to True in which case multiples of 7 back from a day up to a maxium lookback would also be taken into account. So, if we go by extra_lag=True, then lags of 1, 2, 3, 4, 5, 6, 7, 14, 21, ... up to max_lookback parameter would also be taken into account. Multiples of 7 is considered as defaul value since it is reported in similar studies and it resulted in the desired outcome for this problem. 
+The history used to train the model is based on previous days of the target day. For this, a default lag of 7 days is considered. However, we can go beyond 7 days by setting the extra_lag parameter to True in which case multiples of 7 days back from the target up to a maxium lookback would also be taken into account. So, if we go by extra_lag=True, then lags of 1, 2, 3, 4, 5, 6, 7, 14, 21, ... up to max_lookback parameter would also be taken into account. Multiples of 7 days are considered as the default values since they are reported in similar studies and they resulted in the desired outcome for this problem. 
 
 
 ## To run the model
 
-1. Raw data used is found in Sample Dataset.csv in the data folder.
-3. After running the clean_demand.ipynb, the processed data ready as the input for LSTM model is created in the data folder and named as clean_data_ondemand_pca.csv 
+1. Raw data could be found in the data folder (Sample Dataset.csv)
+3. After running the clean_demand.ipynb, the processed data ready as the input for the LSTM model is created in the data folder (clean_data_ondemand_pca.csv) 
 4. Model pipeline could be found in the file predict_demand.ipynb
-5. Executing predict_demand.ipynb, results in the MAPE and relevant graphs for the demand predictions for 3 days in July and 3 days in August 2020 (see picture below)
+5. Executing predict_demand.ipynb, results in the MAPE and relevant graphs of the demand predictions for 3 days in July and 3 days in August, 2020 where MAPE < 4% (see picture below)
 <img src="img/predictions-actuals.png" width=800 height=400 align="middle">  
 
 ## Jupyter files
